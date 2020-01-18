@@ -22,7 +22,7 @@ public class ProductController {
     @Autowired
     Job job;
 
-    @GetMapping
+    @GetMapping("/fileData")
     public BatchStatus load() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
         Map<String, JobParameter> maps = new HashMap<>();
         maps.put("time", new JobParameter(System.currentTimeMillis()));
