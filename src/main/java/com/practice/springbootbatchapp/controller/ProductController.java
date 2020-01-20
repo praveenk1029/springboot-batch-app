@@ -1,5 +1,6 @@
 package com.practice.springbootbatchapp.controller;
 
+import com.practice.springbootbatchapp.config.SchedulerConfig;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
@@ -22,12 +23,16 @@ public class ProductController {
     @Autowired
     Job job;
 
+    @Autowired
+    private SchedulerConfig schedulerConfig;
+
     @GetMapping("/fileData")
-    public BatchStatus load() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
-        Map<String, JobParameter> maps = new HashMap<>();
+    public String load() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
+        /*Map<String, JobParameter> maps = new HashMap<>();
         maps.put("time", new JobParameter(System.currentTimeMillis()));
         JobParameters parameters = new JobParameters(maps);
-        JobExecution jobExecution = jobLauncher.run(job, parameters);
-        return jobExecution.getStatus();
+        JobExecution jobExecution = jobLauncher.run(job, parameters);*/
+        schedulerConfig.scheduleProductJob();
+        return schedulerConfig.scheduleProductJob();
     }
 }
