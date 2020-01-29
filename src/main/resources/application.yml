@@ -1,0 +1,8 @@
+input:
+  file:C:/Users/prave/Desktop/SpringBootProjects/springboot-batch-app/src/main/resources/products.csv
+
+cronExpression:
+  "0/30 */5 * * * *"
+
+server:
+  port: 8082
