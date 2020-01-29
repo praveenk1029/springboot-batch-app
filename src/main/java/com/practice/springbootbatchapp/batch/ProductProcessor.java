@@ -4,6 +4,7 @@ import com.practice.springbootbatchapp.model.Product;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +28,7 @@ public class ProductProcessor implements ItemProcessor<Product, Product> {
         String type = product.getProductType();
         String productType = PRODUCT_TYPES.get(type);
         product.setProductType(productType);
+        product.setCreatedDate(new Date());
         return product;
     }
 }

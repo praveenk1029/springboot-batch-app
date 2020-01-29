@@ -3,6 +3,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Product {
@@ -13,14 +14,25 @@ public class Product {
     private String name;
     private String productType;
     private Double price;
+    private Date createdDate;
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
 
     public Product() {
     }
-    public Product(Integer id, String name, String productType, Double price) {
+
+    public Product(Integer id, String name, String productType, Double price, Date createdDate) {
         this.id = id;
         this.name = name;
         this.productType = productType;
         this.price = price;
+        this.createdDate = createdDate;
     }
 
     public Integer getId() {
@@ -62,6 +74,7 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", productType='" + productType + '\'' +
                 ", price=" + price +
+                ", createdDate=" + createdDate +
                 '}';
     }
 }

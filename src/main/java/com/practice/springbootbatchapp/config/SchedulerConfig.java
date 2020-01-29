@@ -25,7 +25,8 @@ public class SchedulerConfig {
     //@Scheduled(cron = "* */5 * * * *", fixedDelay = 60000)
     //@Scheduled(fixedDelay = (3*60000))//Runs every 3 minutes
     @Async
-    @Scheduled(fixedRate = 1000)
+    //@Scheduled(fixedRate = 600000)
+    @Scheduled(cron = "${cronExpression}")
     public String scheduleProductJob(){
         JobParameters jobParameters =
                 new JobParametersBuilder().addLong("time", System.currentTimeMillis()).toJobParameters();
